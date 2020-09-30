@@ -11,15 +11,15 @@ import java.util.Optional;
 public class UserService {
 
     @Autowired
-    private UserRepository repository;
+    private UserRepository userRepository;
 
     //método para retornar a lista de usuários.
     public List<User> findAll(){
-        return repository.findAll();
+        return userRepository.findAll();
     }
 
     public User findById(Long id){
-        Optional<User> obj = repository.findById(id);
+        Optional<User> obj = userRepository.findById(id);
         return obj.get();
     }
 }
