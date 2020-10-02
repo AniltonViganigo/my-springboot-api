@@ -20,7 +20,12 @@ public class Product implements Serializable {
     private Double price;
     private String imgUrl;
 
-    @Transient
+    // criação da associação "muitos para muitos" entre as classes "Product and Category".//
+    @ManyToMany
+    @JoinTable(name = "tb_product_category",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+
     private Set<Category> categories = new HashSet<>(); //Foi usado o Set para garantir que nao haja a ocorrencia de um mesmo produto com a mesma categoria
 
     public Product() {
